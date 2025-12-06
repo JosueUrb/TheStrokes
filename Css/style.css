@@ -251,6 +251,7 @@ section {
     border-radius: 10px;
     overflow: hidden;
     box-shadow: inset 0 0 35px rgba(0,0,0,0.8);
+    z-index: 5;
 }
 
 .tv-screen::after {
@@ -273,11 +274,14 @@ section {
 }
 
 .tv-screen iframe {
-    width: 100%;
-    height: 100%;
+    position: relative;
+    z-index: 10;
+    pointer-events: auto;
 }
 
 .tv-knob {
+    z-index: 1;
+    pointer-events: auto;
     width: 55px;
     height: 55px;
     border-radius: 50%;
@@ -300,6 +304,31 @@ section {
         #444 10px
     );
     border-radius: 8px;
+}
+
+.tv-screen {
+    position: relative;
+    z-index: 5;
+}
+
+.tv-screen iframe {
+    position: relative;
+    z-index: 10;
+    pointer-events: auto;
+}
+
+.vintage-tv,
+.tv-inner,
+.tv-knob,
+.tv-grill {
+    position: relative;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.tv-knob button,
+.tv-knob a {
+    pointer-events: auto;
 }
 
 @media (max-width: 768px) {
@@ -328,8 +357,6 @@ section {
     }
 }
 
-
-/* --- RATING FIX --- */
 .rating-options {
     gap: 1rem;
 }
@@ -339,20 +366,18 @@ section {
     align-items: center;
     gap: 6px;
     font-size: 1.5rem;
-    min-width: 110px; /* ⭐ Forces natural wrapping */
+    min-width: 110px;
     justify-content: center;
 }
 
-/* Radios scaling */
 .rating-item input[type="radio"] {
     transform: scale(1.3);
 }
 
-/* --- MOBILE FIXES --- */
 @media (max-width: 768px) {
 
     .rating-item {
-        min-width: 90px; /* Smaller items = perfect wrap */
+        min-width: 90px;
         font-size: 1.2rem;
     }
 
